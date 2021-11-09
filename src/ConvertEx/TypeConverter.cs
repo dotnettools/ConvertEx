@@ -14,6 +14,14 @@ namespace DotNetTools.ConvertEx
         private readonly List<ITypeDigester> _digesters = new();
         private readonly List<ITypeConverter> _converters = new();
 
+        public TypeConverter() { }
+
+        public TypeConverter(TypeConverter converter)
+        {
+            _digesters.AddRange(converter._digesters);
+            _converters.AddRange(converter._converters);
+        }
+
         /// <summary>
         /// Registers a digester.
         /// </summary>
