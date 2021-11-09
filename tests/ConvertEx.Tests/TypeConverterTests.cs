@@ -21,9 +21,27 @@ namespace ConvertEx.Tests
         [InlineData(85, typeof(string), "85")]
         [InlineData("85", typeof(int), 85)]
         [InlineData("true", typeof(bool), true)]
-        public void Test_SimpleConversions(object value, Type targetType, object expectedValue)
+        public void Test_SimpleConversion(object value, Type targetType, object expectedValue)
         {
             TestConversion(value, targetType, expectedValue);
+        }
+
+        [Fact]
+        public void Test_ValueToNullable()
+        {
+            TestConversion(100, typeof(int?), (int?)100);
+        }
+
+        [Fact]
+        public void Test_NullableToValue()
+        {
+            TestConversion((int?)100, typeof(int), 100);
+        }
+
+        [Fact]
+        public void Test_NullableToNullable()
+        {
+            TestConversion((double?)100, typeof(int?), (int?)100);
         }
 
         private void TestConversion(object value, Type targetType, object expectedValue)
