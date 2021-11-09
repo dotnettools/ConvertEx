@@ -11,7 +11,8 @@ namespace DotNetTools.ConvertEx.Internal
         public static TypeConverter CreateDefaultConverter()
         {
             return new TypeConverter()
-                .AddDigester<NullableDigest>()
+                .AddDigester<NullableDigester>()
+                .AddConverter<NullableConverter>()
                 .AddConverter<ToStringConverter>()
                 .AddConverter<SystemConverter>();
         }

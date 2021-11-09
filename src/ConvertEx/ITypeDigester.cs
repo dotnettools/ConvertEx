@@ -11,8 +11,9 @@ namespace DotNetTools.ConvertEx
     public interface ITypeDigester
     {
         /// <summary>
-        /// Digests <paramref name="value"/> so it's closer to or of <paramref name="targetType"/>.
+        /// Offers a type to convert to first before converting to <paramref name="targetType"/>.
         /// </summary>
-        object Digest(object value, Type targetType);
+        /// <returns>NULL or <paramref name="targetType"/> if the digester has nothing to offer; otherwise the midst type.</returns>
+        IEnumerable<Type> Offer(Type sourceType, Type targetType);
     }
 }

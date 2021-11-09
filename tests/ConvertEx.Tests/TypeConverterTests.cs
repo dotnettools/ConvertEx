@@ -41,7 +41,9 @@ namespace ConvertEx.Tests
         [Fact]
         public void Test_NullableToNullable()
         {
-            TestConversion((double?)100, typeof(int?), (int?)100);
+            double? val = 100;
+            int? expectedVal = 100;
+            TestConversion(val, typeof(int?), expectedVal);
         }
 
         private void TestConversion(object value, Type targetType, object expectedValue)

@@ -38,6 +38,7 @@ namespace DotNetTools.ConvertEx
         /// Registers a digester by its type.
         /// </summary>
         public static TypeConverter AddDigester<T>(this TypeConverter self)
+            where T : ITypeDigester
         {
             return self.AddDigester(typeof(T));
         }
@@ -46,6 +47,7 @@ namespace DotNetTools.ConvertEx
         /// Registers a converter by its type.
         /// </summary>
         public static TypeConverter AddConverter<T>(this TypeConverter self)
+            where T : ITypeConverter
         {
             return self.AddConverter(typeof(T));
         }
