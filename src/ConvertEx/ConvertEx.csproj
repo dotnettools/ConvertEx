@@ -5,6 +5,11 @@
         <RootNamespace>DotNetTools.ConvertEx</RootNamespace>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>1701;1702;1591</NoWarn>
+        <LangVersion>9</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='netstandard2.0'">
+        <DefineConstants>USE_INLINE</DefineConstants>
     </PropertyGroup>
 
 </Project>

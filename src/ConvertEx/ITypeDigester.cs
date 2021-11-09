@@ -8,7 +8,7 @@ namespace DotNetTools.ConvertEx
     /// <summary>
     /// Helps type conversion by transforming values to types closer to target.
     /// </summary>
-    public interface ITypeDigest
+    public interface ITypeDigester
     {
         /// <summary>
         /// Digests <paramref name="value"/> so it's closer to or of <paramref name="targetType"/>.

@@ -29,9 +29,25 @@ namespace DotNetTools.ConvertEx
         /// <exception cref="InvalidCastException">Thrown in case of conversion error.</exception>
         public static object Convert(this ITypeConverter typeConverter, object value, Type targetType)
         {
-            if (!typeConverter.TryConvert(value, targetType, out var result))
+            if (typeConverter.TryConvert(value, targetType, out var result))
                 return result;
             throw new InvalidCastException($"Cannot convert from {value.GetType()} to {targetType}.");
+        }
+
+        /// <summary>
+        /// Registers a digester by its type.
+        /// </summary>
+        public static TypeConverter AddDigester<T>(this TypeConverter self)
+        {
+            return self.AddDigester(typeof(T));
+        }
+
+        /// <summary>
+        /// Registers a converter by its type.
+        /// </summary>
+        public static TypeConverter AddConverter<T>(this TypeConverter self)
+        {
+            return self.AddConverter(typeof(T));
         }
     }
 }
