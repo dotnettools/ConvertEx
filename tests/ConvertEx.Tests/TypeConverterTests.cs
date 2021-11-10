@@ -29,13 +29,13 @@ namespace ConvertEx.Tests
         [Fact]
         public void Test_ValueToNullable()
         {
-            TestConversion(100, typeof(int?), (int?)100);
+            TestConversion(100, typeof(int?), (int?) 100);
         }
 
         [Fact]
         public void Test_NullableToValue()
         {
-            TestConversion((int?)100, typeof(int), 100);
+            TestConversion((int?) 100, typeof(int), 100);
         }
 
         [Fact]
@@ -46,7 +46,15 @@ namespace ConvertEx.Tests
             TestConversion(val, typeof(int?), expectedVal);
         }
 
-        private void TestConversion(object value, Type targetType, object expectedValue)
+        [Theory]
+        [InlineData(typeof(string), null)]
+        [InlineData(typeof(int), 0)]
+        public void Test_ConvertNull(Type targetType, object expectedValue)
+        {
+            TestConversion(null, targetType, expectedValue);
+        }
+
+        private static void TestConversion(object value, Type targetType, object expectedValue)
         {
             var result = DotNetTools.ConvertEx.ConvertEx.ChangeType(value, targetType);
             Assert.Equal(expectedValue, result);

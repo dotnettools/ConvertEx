@@ -14,7 +14,9 @@ namespace DotNetTools.ConvertEx.Internal
                 .AddDigester<NullableDigester>()
                 .AddConverter<NullableConverter>()
                 .AddConverter<ToStringConverter>()
+                .AddConverter<EnumConverter>()
                 .AddConverter<UriConverter>()
+                .AddConverter<TimeSpanConverter>()
                 .AddConverter<SystemConverter>();
         }
     }

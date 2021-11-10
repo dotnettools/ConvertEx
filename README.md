@@ -3,14 +3,14 @@ A capable alternative to `System.Convert`
 
 ## Features
 - Supports `Nullable<T>` types.
-- Out-of-box converters for non-primitive types e.g. converts a string to `Uri` and vice versa.
+- Out-of-box converters for non-primitive types e.g. converts a string or number to `TimeSpan` and vice versa.
 - Supports custom converters to convert to and from any type.
 - Falls back to `System.Convert`, meaning that everything that `System.Convert` can do, `ConvertEx` does too.
 
 ## <a href="https://www.nuget.org/packages/ConvertEx">NuGet Package</a>
 
 ```powershell
-Install-Package ConvertEx -Version 1.0.1
+Install-Package ConvertEx -Version 1.0.2
 ```
 
 ## Usage Examples
@@ -36,6 +36,8 @@ var converter = new TypeConverter()
                 .AddDigester<NullableDigester>()
                 .AddConverter<NullableConverter>()
                 .AddConverter<ToStringConverter>()
+                .AddConverter<TimeSpanConverter>()
+                .AddConverter<UriConverter>()
                 .AddConverter<SystemConverter>();
 ```
 

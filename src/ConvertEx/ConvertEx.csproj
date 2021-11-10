@@ -6,7 +6,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>1701;1702;1591</NoWarn>
         <LangVersion>9</LangVersion>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <Authors>Javid Shoaei</Authors>
         <Company>github.com/dotnettools</Company>
         <Description>A capable alternative  to System.Convert</Description>
@@ -23,7 +23,7 @@
     <ItemGroup>
       <None Include="..\..\LICENSE">
         <Pack>True</Pack>
-        <PackagePath></PackagePath>
+        <PackagePath />
       </None>
     </ItemGroup>
 
