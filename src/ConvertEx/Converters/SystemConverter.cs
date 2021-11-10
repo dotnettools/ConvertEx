@@ -8,9 +8,9 @@ namespace DotNetTools.ConvertEx.Converters
     /// <summary>
     /// Uses <see cref="System.Convert"/> to convert the types.
     /// </summary>
-    public class SystemConverter : ITypeConverter
+    public class SystemConverter : TypeConverterBase
     {
-        public bool TryConvert(object value, Type targetType, out object convertedValue)
+        public override bool TryConvert(object value, Type targetType, out object convertedValue)
         {
             try
             {

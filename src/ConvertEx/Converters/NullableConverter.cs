@@ -9,11 +9,11 @@ namespace DotNetTools.ConvertEx.Converters
     /// <summary>
     /// Converts to and from <see cref="Nullable{T}"/>.
     /// </summary>
-    public class NullableConverter : ITypeConverter
+    public class NullableConverter : TypeConverterBase
     {
         private static readonly Type NullableType = typeof(Nullable<>);
 
-        public bool TryConvert(object value, Type destType, out object convertedValue)
+        public override bool TryConvert(object value, Type destType, out object convertedValue)
         {
             if (value != null)
             {

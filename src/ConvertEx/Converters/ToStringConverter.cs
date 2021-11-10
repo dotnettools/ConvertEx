@@ -8,9 +8,9 @@ namespace DotNetTools.ConvertEx.Converters
     /// <summary>
     /// Implements <see cref="ITypeConverter"/> with the ability to change any type to string.
     /// </summary>
-    public class ToStringConverter : ITypeConverter
+    public class ToStringConverter : TypeConverterBase
     {
-        public bool TryConvert(object value, Type targetType, out object convertedValue)
+        public override bool TryConvert(object value, Type targetType, out object convertedValue)
         {
             if (targetType != typeof(string))
             {
