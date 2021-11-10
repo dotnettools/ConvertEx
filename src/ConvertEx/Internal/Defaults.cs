@@ -14,8 +14,8 @@ namespace DotNetTools.ConvertEx.Internal
                 .AddDigester<NullableDigester>()
                 .AddConverter<NullableConverter>()
                 .AddConverter<ToStringConverter>()
-                .AddConverter<SystemConverter>()
-                .AddConverter<UriConverter>();
+                .AddConverter<UriConverter>()
+                .AddConverter<SystemConverter>();
         }
     }
 }

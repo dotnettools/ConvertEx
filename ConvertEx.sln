@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertEx", "src\ConvertEx\ConvertEx.csproj", "{7B4F6AAA-35F4-414B-BCCF-C626903AB4D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvertEx", "src\ConvertEx\ConvertEx.csproj", "{7B4F6AAA-35F4-414B-BCCF-C626903AB4D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertEx.Tests", "tests\ConvertEx.Tests\ConvertEx.Tests.csproj", "{38F8D170-C715-4983-B2F1-5B89DAD81C8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvertEx.Tests", "tests\ConvertEx.Tests\ConvertEx.Tests.csproj", "{38F8D170-C715-4983-B2F1-5B89DAD81C8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{10996EAE-4C32-458F-89DA-3069F8CABAF7}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

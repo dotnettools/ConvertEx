@@ -6,10 +6,25 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>1701;1702;1591</NoWarn>
         <LangVersion>9</LangVersion>
+        <Version>1.0.1</Version>
+        <Authors>Javid Shoaei</Authors>
+        <Company>github.com/dotnettools</Company>
+        <Description>A capable alternative  to System.Convert</Description>
+        <Copyright>Copyright (C) 2021 Javid Shoaei</Copyright>
+        <PackageProjectUrl>https://github.com/dotnettools/ConvertEx</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/dotnettools/ConvertEx</RepositoryUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='netstandard2.0'">
         <DefineConstants>USE_INLINE</DefineConstants>
     </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\..\LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+    </ItemGroup>
 
 </Project>
