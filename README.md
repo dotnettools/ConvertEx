@@ -1,2 +1,2 @@
 # ConvertEx
-A more capable alternative to `System.Convert`
+A capable alternative to `System.Convert`
