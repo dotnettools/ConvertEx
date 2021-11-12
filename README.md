@@ -10,7 +10,7 @@ A capable alternative to `System.Convert`
 ## <a href="https://www.nuget.org/packages/ConvertEx">NuGet Package</a>
 
 ```powershell
-Install-Package ConvertEx -Version 1.0.2
+Install-Package ConvertEx -Version 1.0.3
 ```
 
 ## Usage Examples
