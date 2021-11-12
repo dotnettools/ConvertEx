@@ -13,6 +13,7 @@ namespace DotNetTools.ConvertEx
     {
         private readonly List<ITypeDigester> _digesters = new();
         private readonly List<ITypeConverter> _converters = new();
+        private readonly Dictionary<Tuple<Type, Type>, IList<Type>> _conversionPathCache = new();
 
         public TypeConverter()
         {
@@ -111,10 +112,23 @@ namespace DotNetTools.ConvertEx
             return true;
         }
 
+        /// <summary>
+        /// Clears the internal cache of conversion paths.
+        /// </summary>
+        public void ClearCache()
+        {
+            _conversionPathCache.Clear();
+        }
+
         private IList<Type> GetCachedConversionPath(Type sourceType, Type destType)
         {
-            // TODO implement GetCachedConversionPath properly
-            return GetConversionPath(sourceType, destType);
+            var typeTuple = new Tuple<Type, Type>(sourceType, destType);
+            if (_conversionPathCache.TryGetValue(typeTuple, out var path))
+                return path;
+
+            path = GetConversionPath(sourceType, destType);
+            _conversionPathCache[typeTuple] = path;
+            return path;
         }
 
         private IList<Type> GetConversionPath(Type sourceType, Type destType)
