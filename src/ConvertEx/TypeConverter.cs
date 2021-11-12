@@ -62,21 +62,30 @@ namespace DotNetTools.ConvertEx
 
         public bool TryConvert(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue)
         {
-            // test null value
-            if (value == null)
+            bool TestSpecialConvert(out object convertedValue)
             {
-                convertedValue = targetType.GetDefaultValue();
-                return true;
+                // test null value
+                if (value == null)
+                {
+                    convertedValue = targetType.GetDefaultValue();
+                    return true;
+                }
+
+                // test same type
+                var valueType = value.GetType();
+                var implementingInterface = targetType.IsInterface && valueType.GetInterfaces().Contains(targetType);
+                if (valueType == targetType || implementingInterface || valueType.IsSubclassOf(targetType))
+                {
+                    convertedValue = value;
+                    return true;
+                }
+
+                convertedValue = null;
+                return false;
             }
 
-            // test same type
-            var valueType = value.GetType();
-            var implementingInterface = targetType.IsInterface && valueType.GetInterfaces().Contains(targetType);
-            if (valueType == targetType || implementingInterface || valueType.IsSubclassOf(targetType))
-            {
-                convertedValue = value;
+            if (TestSpecialConvert(out convertedValue))
                 return true;
-            }
 
             // get conversion path
             var path = GetCachedConversionPath(value.GetType(), targetType);
@@ -89,6 +98,8 @@ namespace DotNetTools.ConvertEx
             // convert value through the path
             foreach (var type in path)
             {
+                if (TestSpecialConvert(out convertedValue))
+                    continue;
                 if (!TryConvertInternal(value, type, formatProvider, out value))
                 {
                     convertedValue = null;
@@ -136,14 +147,15 @@ namespace DotNetTools.ConvertEx
             foreach (var digester in _digesters)
             {
                 var offers = digester.Offer(currentType, destType);
-                foreach (var offer in offers)
-                {
-                    if (offer != null && offer != destType)
+                if (offers != null)
+                    foreach (var offer in offers)
                     {
-                        list.Add(offer);
-                        return true;
+                        if (offer != null && offer != destType)
+                        {
+                            list.Add(offer);
+                            return true;
+                        }
                     }
-                }
             }
 
             return false;
