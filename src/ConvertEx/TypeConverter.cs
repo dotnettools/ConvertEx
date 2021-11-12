@@ -69,6 +69,15 @@ namespace DotNetTools.ConvertEx
                 return true;
             }
 
+            // test same type
+            var valueType = value.GetType();
+            var implementingInterface = targetType.IsInterface && valueType.GetInterfaces().Contains(targetType);
+            if (valueType == targetType || implementingInterface || valueType.IsSubclassOf(targetType))
+            {
+                convertedValue = value;
+                return true;
+            }
+
             // get conversion path
             var path = GetCachedConversionPath(value.GetType(), targetType);
             if (path == null)
@@ -93,6 +102,7 @@ namespace DotNetTools.ConvertEx
 
         private IList<Type> GetCachedConversionPath(Type sourceType, Type destType)
         {
+            // TODO implement GetCachedConversionPath properly
             return GetConversionPath(sourceType, destType);
         }
 

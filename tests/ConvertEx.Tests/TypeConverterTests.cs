@@ -11,9 +11,24 @@ namespace ConvertEx.Tests
         [Theory]
         [InlineData(85, typeof(int), 85)]
         [InlineData("test", typeof(string), "test")]
-        public void Test_SameType(object value, Type targetType, object expectedValue)
+        [InlineData("test", typeof(object), "test")]
+        public void Test_NoConversion(object value, Type targetType, object expectedValue)
         {
             TestConversion(value, targetType, expectedValue);
+        }
+
+        [Fact]
+        public void Test_NoSubClassConversion()
+        {
+            var b = new B();
+            TestConversion(b, typeof(A), b);
+        }
+
+        [Fact]
+        public void Test_NoImplementedInterfaceConversion()
+        {
+            var a = new A();
+            TestConversion(a, typeof(ITest), a);
         }
 
         [Theory]
@@ -29,13 +44,13 @@ namespace ConvertEx.Tests
         [Fact]
         public void Test_ValueToNullable()
         {
-            TestConversion(100, typeof(int?), (int?) 100);
+            TestConversion(100, typeof(int?), (int?)100);
         }
 
         [Fact]
         public void Test_NullableToValue()
         {
-            TestConversion((int?) 100, typeof(int), 100);
+            TestConversion((int?)100, typeof(int), 100);
         }
 
         [Fact]
@@ -59,5 +74,16 @@ namespace ConvertEx.Tests
             var result = DotNetTools.ConvertEx.ConvertEx.ChangeType(value, targetType);
             Assert.Equal(expectedValue, result);
         }
+
+        private class A : ITest
+        {
+
+        }
+
+        private class B : A
+        {
+        }
+
+        private interface ITest { }
     }
 }
