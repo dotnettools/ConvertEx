@@ -14,6 +14,6 @@ namespace DotNetTools.ConvertEx
         /// Tries to convert <paramref name="value"/> to <paramref name="targetType"/>.
         /// </summary>
         /// <returns>Whether or not the conversion was successful.</returns>
-        bool TryConvert(object value, Type targetType, out object convertedValue);
+        bool TryConvert(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue);
     }
 }

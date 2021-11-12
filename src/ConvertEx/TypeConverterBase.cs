@@ -14,6 +14,6 @@ namespace DotNetTools.ConvertEx
     /// </remarks>
     public abstract class TypeConverterBase : ITypeConverter
     {
-        public abstract bool TryConvert(object value, Type targetType, out object convertedValue);
+        public abstract bool TryConvert(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue);
     }
 }

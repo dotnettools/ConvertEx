@@ -10,11 +10,11 @@ namespace DotNetTools.ConvertEx.Converters
     /// </summary>
     public class SystemConverter : TypeConverterBase
     {
-        public override bool TryConvert(object value, Type targetType, out object convertedValue)
+        public override bool TryConvert(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue)
         {
             try
             {
-                convertedValue = System.Convert.ChangeType(value, targetType);
+                convertedValue = System.Convert.ChangeType(value, targetType, formatProvider);
                 return true;
             }
             catch (InvalidCastException)

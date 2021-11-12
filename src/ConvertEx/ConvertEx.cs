@@ -23,9 +23,20 @@ namespace DotNetTools.ConvertEx
 #if USE_INLINE
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
+        public static bool TryChangeType(object value, Type conversionType, IFormatProvider formatProvider, out object convertedValue)
+        {
+            return DefaultConverter.TryConvert(value, conversionType, formatProvider, out convertedValue);
+        }
+
+        /// <summary>
+        /// Changes the type of <paramref name="value"/> to <paramref name="conversionType"/>.
+        /// </summary>
+#if USE_INLINE
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static bool TryChangeType(object value, Type conversionType, out object convertedValue)
         {
-            return DefaultConverter.TryConvert(value, conversionType, out convertedValue);
+            return TryChangeType(value, conversionType, null, out convertedValue);
         }
 
         /// <summary>

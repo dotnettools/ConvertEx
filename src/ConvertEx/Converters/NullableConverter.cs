@@ -13,7 +13,7 @@ namespace DotNetTools.ConvertEx.Converters
     {
         private static readonly Type NullableType = typeof(Nullable<>);
 
-        public override bool TryConvert(object value, Type destType, out object convertedValue)
+        public override bool TryConvert(object value, Type destType, IFormatProvider formatProvider, out object convertedValue)
         {
             if (value != null)
             {

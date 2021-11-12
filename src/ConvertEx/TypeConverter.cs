@@ -47,7 +47,7 @@ namespace DotNetTools.ConvertEx
         /// </summary>
         public TypeConverter AddDigester(Type type)
         {
-            var digester = (ITypeDigester) Activator.CreateInstance(type);
+            var digester = (ITypeDigester)Activator.CreateInstance(type);
             return AddDigester(digester);
         }
 
@@ -56,11 +56,11 @@ namespace DotNetTools.ConvertEx
         /// </summary>
         public TypeConverter AddConverter(Type type)
         {
-            var converter = (ITypeConverter) Activator.CreateInstance(type);
+            var converter = (ITypeConverter)Activator.CreateInstance(type);
             return AddConverter(converter);
         }
 
-        public bool TryConvert(object value, Type targetType, out object convertedValue)
+        public bool TryConvert(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue)
         {
             // test null value
             if (value == null)
@@ -80,7 +80,7 @@ namespace DotNetTools.ConvertEx
             // convert value through the path
             foreach (var type in path)
             {
-                if (!TryConvertInternal(value, type, out value))
+                if (!TryConvertInternal(value, type, formatProvider, out value))
                 {
                     convertedValue = null;
                     return false;
@@ -139,11 +139,11 @@ namespace DotNetTools.ConvertEx
             return false;
         }
 
-        private bool TryConvertInternal(object value, Type targetType, out object convertedValue)
+        private bool TryConvertInternal(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue)
         {
             foreach (var converter in _converters)
             {
-                if (converter.TryConvert(value, targetType, out convertedValue))
+                if (converter.TryConvert(value, targetType, formatProvider, out convertedValue))
                     return true;
             }
 

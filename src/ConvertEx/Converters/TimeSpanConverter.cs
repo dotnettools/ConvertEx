@@ -8,7 +8,7 @@ namespace DotNetTools.ConvertEx.Converters
     /// </summary>
     public class TimeSpanConverter : TypeConverterBase
     {
-        public override bool TryConvert(object value, Type targetType, out object convertedValue)
+        public override bool TryConvert(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue)
         {
             var valueType = value.GetType();
             if (targetType != typeof(TimeSpan) && valueType != typeof(TimeSpan))
@@ -22,11 +22,11 @@ namespace DotNetTools.ConvertEx.Converters
                 // convert to TimeSpan
                 if (valueType == typeof(string))
                 {
-                    convertedValue = TimeSpan.Parse((string) value);
+                    convertedValue = TimeSpan.Parse((string)value);
                 }
                 else if (valueType.IsNumericType())
                 {
-                    var milliseconds = (double) Convert.ChangeType(value, TypeCode.Double);
+                    var milliseconds = (double)Convert.ChangeType(value, TypeCode.Double);
                     convertedValue = TimeSpan.FromMilliseconds(milliseconds);
                 }
                 else
@@ -38,7 +38,7 @@ namespace DotNetTools.ConvertEx.Converters
             else
             {
                 // convert from TimeSpan
-                var timeSpan = (TimeSpan) value;
+                var timeSpan = (TimeSpan)value;
                 if (targetType == typeof(string))
                 {
                     convertedValue = timeSpan.ToString();

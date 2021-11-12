@@ -10,7 +10,7 @@ namespace DotNetTools.ConvertEx.Converters
     /// </summary>
     public class UriConverter : ITypeConverter
     {
-        public bool TryConvert(object value, Type targetType, out object convertedValue)
+        public bool TryConvert(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue)
         {
             if (targetType != typeof(Uri))
             {

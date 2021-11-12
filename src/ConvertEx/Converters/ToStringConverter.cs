@@ -10,7 +10,7 @@ namespace DotNetTools.ConvertEx.Converters
     /// </summary>
     public class ToStringConverter : TypeConverterBase
     {
-        public override bool TryConvert(object value, Type targetType, out object convertedValue)
+        public override bool TryConvert(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue)
         {
             if (targetType != typeof(string))
             {

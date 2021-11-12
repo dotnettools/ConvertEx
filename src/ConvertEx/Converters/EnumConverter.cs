@@ -13,7 +13,7 @@ namespace DotNetTools.ConvertEx.Converters
         /// </summary>
         public bool IgnoreCase { get; set; } = true;
 
-        public override bool TryConvert(object value, Type targetType, out object convertedValue)
+        public override bool TryConvert(object value, Type targetType, IFormatProvider formatProvider, out object convertedValue)
         {
             if (targetType.IsEnum)
             {
