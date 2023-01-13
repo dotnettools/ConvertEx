@@ -1,5 +1,5 @@
 # ConvertEx
-ConvertEx is a capable alternative to `System.Convert`. It does its best to return a value instead of throwing exceptions.
+ConvertEx is a capable extension to `System.Convert`. It does its best to return a value instead of throwing exceptions.
 
 ## Features
 - Supports `Nullable<T>` types.
